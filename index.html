@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charge List</title>
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+<div class="container">
+  <h1>📋 Charge List</h1>
+  <p class="subtitle">
+    <span class="dot" id="liveDot"></span>
+    <span id="statusText">Connecting…</span>
+  </p>
+
+  <div class="tabs" id="tabs"></div>
+
+  <h2 class="tab-title" id="tabTitle"></h2>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search all tabs (name, page no, remarks...)" autocomplete="off" disabled>
+    </div>
+    <button class="btn btn-success" id="btnAdd" onclick="openAddModal()" disabled>＋ Add</button>
+    <button class="btn btn-outline" id="btnRefresh" onclick="refresh()" disabled>↻ Refresh</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat">Rows: <strong id="totalCount">0</strong></div>
+    <div class="stat">Showing: <strong id="showCount">0</strong></div>
+  </div>
+
+  <div class="table-container">
+    <div class="overlay-loading" id="tableLoading">
+      <span class="spinner" style="width:28px;height:28px;border-width:3px;border-top-color:var(--accent)"></span>
+      <span style="color:var(--muted);font-size:0.9rem">Loading from Google Sheet…</span>
+    </div>
+    <div class="table-wrap">
+      <div id="tableArea"></div>
+      <div id="emptyState" class="empty" style="display:none">No rows found</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2 id="modalTitle">Edit</h2>
+    <div id="modalFields"></div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" id="saveBtn" onclick="saveItem()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="script.js?v=2"></script>
+</body>
+</html>
